@@ -1,0 +1,12 @@
+{
+  "name": "sushi-one",
+  "displayName": "sushi-one",
+  "expo": {
+    "name": "sushi-one",
+    "slug": "sushi-one",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
