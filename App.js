@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "reac
 import { Button, ThemeProvider, Header, Card, Icon, Image } from 'react-native-elements';
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import OrderList from "./Components/OrderList";
 import SushiMenu from "./Components/SushiMenu";
 
 export const PAGE_INDEX = {
@@ -12,47 +13,18 @@ export const PAGE_INDEX = {
   SETTINGS: 3
 }
 
-const arr = [
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+export const arr = [
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Золотий дракон", time: 8, discount: 30, price: 180, weight: 300, uri: "https://scontent-iev1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/170078398_490775915613578_8119871118693751164_n.jpg?tp=1&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_cat=102&_nc_ohc=oMDgJXjiDGwAX-_5I87&edm=AP_V10EAAAAA&ccb=7-4&oh=2916a0441dad3bdd2a483914b6a84562&oe=609FA927&_nc_sid=4f375e" },
+  { name: "Сет \"Америка\"", time: 19, price: 280, weight: 735, uri: "https://scontent-iev1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s750x750/170019493_211181310807601_4975685736580773260_n.jpg?tp=1&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=2Y_xMNtBpSwAX_ubYkm&edm=AP_V10EAAAAA&ccb=7-4&oh=6aa3d94ab4181186fd5a738d210a5a2f&oe=609FF4CA&_nc_sid=4f375e" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
+  { name: "Філадельфія з лососем", time: 6, price: 140, weight: 370, uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
 ]
 
 export default function MyApp () {
@@ -61,7 +33,7 @@ export default function MyApp () {
     switch (page)
     {
       case PAGE_INDEX.ORDERS:
-        return <View></View>
+        return <OrderList></OrderList>
       case PAGE_INDEX.ADD:
         return <View></View>
       case PAGE_INDEX.FOOD_MENU:

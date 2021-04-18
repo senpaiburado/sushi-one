@@ -3,56 +3,7 @@ import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions, Text } from
 import { Button, ThemeProvider, Header, Card, Icon, Image,  } from 'react-native-elements';
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-export const PAGE_INDEX = {
-  ORDERS: 0,
-  ADD: 1,
-  FOOD_MENU: 2,
-  SETTINGS: 3
-}
-
-const arr = [
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-  { name: "Філадельфія з лососем", uri: "https://static.tildacdn.com/tild6631-3433-4562-b030-336536356434/_premium.jpg" },
-]
+import {arr} from "../App"
 
 export default function MyApp (props) {
   
@@ -83,7 +34,7 @@ export default function MyApp (props) {
                         color='#F23E46'
                         size={15}
                     />
-                    <Text style={styles.weight}>280г</Text>
+                    <Text style={styles.weight}>{item.weight}г</Text>
                 </View>
                 <View style={{width: "50%", flexDirection: "row", justifyContent: "flex-end"}}>
                     <Icon style={{marginTop: "26%"}}
@@ -92,7 +43,7 @@ export default function MyApp (props) {
                         color='#F23E46'
                         size={16}
                     />
-                    <Text style={styles.price}>140₴</Text>
+                    <Text style={styles.price}>{item.price}₴</Text>
                 </View>
             </View>
             <View style={{flexDirection: "row", marginTop: 10}}>
@@ -104,7 +55,7 @@ export default function MyApp (props) {
                         color='#F23E46'
                         size={19}
                     />
-                    <Text style={styles.weight}>8 хв</Text>
+                    <Text style={styles.weight}>{item.time} хв</Text>
                 </View>
                 <View style={{width: "50%", flexDirection: "row", justifyContent: "flex-end"}}>
                     <Icon style={{marginTop: "26%"}}
@@ -113,7 +64,7 @@ export default function MyApp (props) {
                         color='#F23E46'
                         size={16}
                     />
-                    <Text style={styles.discount}>0₴</Text>
+                    <Text style={styles.discount}>{item.discount ? item.discount : 0}₴</Text>
                 </View>
             </View>
             </Card>
