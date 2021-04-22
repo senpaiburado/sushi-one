@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import {Button} from "react-native-elements";
+import {Button, withBadge} from "react-native-elements";
 import {arr} from "../App"
 
 let orders = [
@@ -56,10 +56,11 @@ function OrderItem(props) {
                     return <View style={{ backgroundColor: "#292D3E", width: "100%", height: 2 }}></View>
                 }}
                 renderItem={({index}) => {
+                    const BImage = withBadge(5)(Image)
                     return (
                         <View style={{flexDirection: "row"}}>
-                            <Image resizeMode="stretch" style={{width: 60, height: 60}} width={60} height={60} source={{ uri: arr[index].uri }} />
-                            <Text style={{color: "white"}}>{arr[index].name}</Text>
+                            <BImage resizeMode="stretch" style={{width: 60, height: 60}} width={60} height={60} source={{ uri: arr[index].uri }} />
+                            <Text style={{color: "white", alignSelf: "center", paddingLeft: 20 }}>{arr[index].name}</Text>
                         </View>
                     )
                 }} />

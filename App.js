@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "reac
 import { Button, ThemeProvider, Header, Card, Icon, Image } from 'react-native-elements';
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AddOrder from "./Components/AddOrder";
 import OrderList from "./Components/OrderList";
 import SushiMenu from "./Components/SushiMenu";
 
@@ -35,7 +36,7 @@ export default function MyApp () {
       case PAGE_INDEX.ORDERS:
         return <OrderList></OrderList>
       case PAGE_INDEX.ADD:
-        return <View></View>
+        return <AddOrder></AddOrder>
       case PAGE_INDEX.FOOD_MENU:
         return <SushiMenu {...props} />
       case PAGE_INDEX.SETTINGS:

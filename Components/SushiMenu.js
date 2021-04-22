@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions, Text } from
 import { Button, ThemeProvider, Header, Card, Icon, Image,  } from 'react-native-elements';
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {arr} from "../App"
+
 
 export default function MyApp (props) {
   
